@@ -7,20 +7,16 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/farm_trace?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
     username: root
+#    password: 767663000
     password: 123456
-  main:
-    allow-bean-definition-overriding: true
 
 
 mybatis-plus:
-  configuration:
-    map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  global-config:
-    db-config:
-      id-type: ASSIGN_ID
+  type-aliases-package: com.ling.entity # 别名扫描包
 farm:
   path: D:\farm\img\
+#    path: /root/SpringBoot/files/
+
 
 
 

@@ -1,4 +1,4 @@
-package com.ling.common;
+package com.ling.util;
 
 import org.springframework.stereotype.Service;
 import org.web3j.protocol.Web3j;

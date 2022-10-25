@@ -17,7 +17,7 @@ public class Product {
 
     @TableId(type = IdType.AUTO)
     @ApiModelProperty("主键")
-    private Integer id;
+    private Long id;
 
     @ApiModelProperty("产品名")
     private String productName;
