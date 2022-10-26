@@ -21,7 +21,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         LambdaQueryWrapper<Product> queryWrapper = new LambdaQueryWrapper();
         // 3.添加一个过滤条件
         queryWrapper.like(StrUtil.isNotEmpty(name), Product::getName, name);
-        queryWrapper.eq(Product::getStatus, 1);
+        queryWrapper.eq(Product::getIsPass, 1);
         // 添加排序条件
         queryWrapper.orderByAsc(Product::getId);
 
