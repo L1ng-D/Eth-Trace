@@ -1,6 +1,8 @@
 package com.ling.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ling.common.R;
+import com.ling.common.Result;
 import com.ling.entity.Product;
 import com.ling.service.ProductService;
 import io.swagger.annotations.Api;
@@ -8,10 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -29,6 +28,11 @@ public class ProductController {
         productService.save(product);
 
         return R.success("上传农产品成功!");
+    }
+
+    @GetMapping("/page")
+    public Result page(int page, int pageSize, String name){
+        return productService.queryWithPage(page, pageSize, name);
     }
 
 

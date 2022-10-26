@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.time.LocalDateTime;
 
 @Data
-@ApiModel("产品")
+@ApiModel("农产品")
 public class Product {
 
     @TableId(type = IdType.AUTO)
@@ -20,19 +20,22 @@ public class Product {
     private Long id;
 
     @ApiModelProperty("产品名")
-    private String productName;
+    private String name;
 
     @ApiModelProperty("产品状态")
-    private Integer state;
+    private Integer status;
+
+    @ApiModelProperty("上传单位")
+    private String company;
+
+    @ApiModelProperty("种植区域")
+    private String area;
+
+    @ApiModelProperty("是否审核通过")
+    private int isPass;
 
     @ApiModelProperty("图片")
     private String image;
-
-    @ApiModelProperty("种植时间")
-    private LocalDateTime plantTime;
-
-    @ApiModelProperty("产品信息描述")
-    private String description;
 
     @ApiModelProperty("溯源码")
     private String traceCode;
@@ -40,5 +43,9 @@ public class Product {
     @ApiModelProperty("提交时间")
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
+
+    @ApiModelProperty("更新时间")
+    @TableField(fill = FieldFill.UPDATE)
+    private LocalDateTime updateTime;
 
 }
