@@ -3,25 +3,70 @@ package com.ling;
 import com.ling.contract.Counter_sol_Counter;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.web3j.abi.datatypes.generated.Bytes32;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.EthAccounts;
 import org.web3j.protocol.core.methods.response.EthBlockNumber;
 import org.web3j.protocol.core.methods.response.Web3ClientVersion;
 import org.web3j.protocol.http.HttpService;
+import org.web3j.utils.Numeric;
 
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
 @SpringBootTest
 class EthTraceApplicationTests {
 
     private Web3j web3j = Web3j.build(new HttpService("http://localhost:8545"));
+    // 通过账户私钥，选择钱包账户
+    private Credentials credentials = Credentials.create("8f5da367bbc640e5f82b94244555dd060415d580488e6f283664482591408a6d");
+    // 已部署合约地址
+    final String CONTRACT_ADDRESS = "0x8b068c8B15F2AAFC2DA9f8f4b9BEeC536793a59b";
 
-    private Credentials credentials = Credentials.create("92a367fc89d62b4457bdbdd275f97bb0e51dcd3a895a2981591855e2cecd48cf"); // 账户私钥
+    @Test
+    public void testContract() throws Exception {
+        // 设置gas相关参数
+        BigInteger gasLimit = new BigInteger("4700000");
+        BigInteger gasPrices = web3j.ethGasPrice().send().getGasPrice();
+
+        // 调用合约方法
+        Grade testContract = Grade.load(CONTRACT_ADDRESS,web3j,
+                credentials,gasPrices,gasLimit);
+
+        // 设置学号
+        byte[] id = Numeric.hexStringToByteArray(asciiToHex("20273122"));
+
+        System.out.println("transaction" + testContract.setGrade(id, BigInteger.valueOf(99)).sendAsync().get());
+        System.out.println("grade = " + testContract.grades(id).sendAsync().get());
+
+    }
 
 
-    private BigInteger ethBase = BigInteger.valueOf(10).pow(18);   // 1 eth = 10^18 wei
+    public String asciiToHex(String asciiValue)
+    {
+        char[] chars = asciiValue.toCharArray();
+        StringBuffer hex = new StringBuffer();
+        for (int i = 0; i < chars.length; i++)
+        {
+            hex.append(Integer.toHexString((int) chars[i]));
+        }
+
+        return hex.toString() + "".join("", Collections.nCopies(32 - (hex.length()/2), "00"));
+    }
+
+    public static String hexToASCII(String hexValue)
+    {
+        StringBuilder output = new StringBuilder("");
+        for (int i = 0; i < hexValue.length(); i += 2)
+        {
+            String str = hexValue.substring(i, i + 2);
+            output.append((char) Integer.parseInt(str, 16));
+        }
+        return output.toString();
+    }
 
     @Test
     public void getVersion() throws ExecutionException, InterruptedException {
@@ -49,30 +94,7 @@ class EthTraceApplicationTests {
         System.out.println("accounts.getAccounts() = " + accounts.getAccounts());
     }
 
-    @Test
-    public void testContract() throws Exception {
-        BigInteger gasLimit = new BigInteger("4700000");
-        BigInteger gasPrices = web3j.ethGasPrice().send().getGasPrice();
-        System.out.println(gasPrices);
 
-//        System.out.println("address" + credentials.getAddress());
-
-//        Counter_sol_Counter deployContract = Counter_sol_Counter.deploy(web3j, credentials, gasPrices, gasLimit).send();
-
-        // 部署完成后打印合约地址
-//        System.out.println(deployContract.getContractAddress());
-
-        // 判断部署的合约是否可用
-//        System.out.println(deployContract.isValid());
-
-        // 调用合约方法
-        Counter_sol_Counter testContract = Counter_sol_Counter.load("0xC0bf69F0d3dDc69238310D06aC134be95B5B8fE4",web3j,
-                credentials,gasPrices,gasLimit);
-        System.out.println("count1=>" + testContract.getCount().sendAsync().get().getValue());
-        testContract.increment().send();
-        System.out.println("count2=>" + testContract.getCount().send().getValue());
-
-    }
 
 
 

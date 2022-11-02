@@ -3,7 +3,7 @@ package com.ling.service.impl;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ling.common.Result;
-import com.ling.dto.RegisterFormDTO;
+import com.ling.dto.RegisterFormDto;
 import com.ling.entity.User;
 import com.ling.mapper.UserMapper;
 import com.ling.service.UserService;
@@ -18,7 +18,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
 
     @Override
-    public Result register(RegisterFormDTO registerFormDTO) {
+    public Result register(RegisterFormDto registerFormDTO) {
         String userName = registerFormDTO.getUserName();
         String password1 = registerFormDTO.getPassword();
         String password2 = registerFormDTO.getRepeatPassword();

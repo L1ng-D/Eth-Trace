@@ -3,6 +3,7 @@ package com.ling.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ling.common.R;
 import com.ling.common.Result;
+import com.ling.dto.ProductDto;
 import com.ling.entity.Product;
 import com.ling.service.ProductService;
 import io.swagger.annotations.Api;
@@ -23,11 +24,10 @@ public class ProductController {
 
     @ApiOperation(value = "新增农产品接口")
     @PostMapping("/add")
-    public R<String> save(@RequestBody Product product){
-        log.info("product,{}", product);
-        productService.save(product);
+    public Result save(@RequestBody ProductDto productDto){
+        log.info("product,{}", productDto);
 
-        return R.success("上传农产品成功!");
+        return productService.saveWithCrop(productDto);
     }
 
     @GetMapping("/page")

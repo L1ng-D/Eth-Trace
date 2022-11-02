@@ -3,8 +3,7 @@ package com.ling.dto;
 import lombok.Data;
 
 @Data
-
-public class RegisterFormDTO {
+public class RegisterFormDto {
 
     private String userName;
 
