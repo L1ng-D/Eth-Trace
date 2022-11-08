@@ -6,7 +6,7 @@ import com.ling.dto.ProductDto;
 import com.ling.entity.Product;
 
 public interface ProductService extends IService<Product> {
-    Result queryWithPage(int page, int pageSize, String name);
+    Result queryWithPage(int page, int pageSize, String name, Integer status);
 
     Result saveWithCrop(ProductDto productDto);
 }

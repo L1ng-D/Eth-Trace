@@ -34,7 +34,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
      * @return
      */
     @Override
-    public Result queryWithPage(int page, int pageSize, String name) {
+    public Result queryWithPage(int page, int pageSize, String name, Integer status) {
         // 1.构造分页构造器
         Page pageInfo = new Page(page, pageSize);
 
@@ -42,6 +42,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         LambdaQueryWrapper<Product> queryWrapper = new LambdaQueryWrapper();
         // 3.添加一个过滤条件
         queryWrapper.like(StrUtil.isNotEmpty(name), Product::getName, name);
+        queryWrapper.eq(status != null, Product::getStatus, status);
         queryWrapper.eq(Product::getIsPass, 1);
         // 添加排序条件
         queryWrapper.orderByAsc(Product::getId);

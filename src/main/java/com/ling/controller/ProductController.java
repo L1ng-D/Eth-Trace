@@ -8,6 +8,7 @@ import com.ling.entity.Product;
 import com.ling.service.ProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,8 +32,8 @@ public class ProductController {
     }
 
     @GetMapping("/page")
-    public Result page(int page, int pageSize, String name){
-        return productService.queryWithPage(page, pageSize, name);
+    public Result page(int page, int pageSize, String name, Integer status){
+        return productService.queryWithPage(page, pageSize, name, status);
     }
 
 
