@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 02/11/2022 20:04:35
+ Date: 18/11/2022 19:33:06
 */
 
 SET NAMES utf8mb4;
@@ -24,18 +24,38 @@ DROP TABLE IF EXISTS `detection`;
 CREATE TABLE `detection`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `product_id` int NOT NULL COMMENT '产品id',
-  `type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '检查种类',
-  `untiy` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NULL DEFAULT NULL COMMENT '检查单位名称',
+  `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '商品名称',
+  `unity` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NULL DEFAULT NULL COMMENT '检查单位名称',
   `director` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NULL DEFAULT NULL COMMENT '负责人',
   `img` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '合格证图片',
   `is_valid` tinyint NULL DEFAULT NULL COMMENT '检查结果 0不合格  1合格',
   `create_time` datetime NULL DEFAULT NULL COMMENT '检查时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of detection
 -- ----------------------------
+INSERT INTO `detection` VALUES (1, 178, '8iqOAAwzZp', 'kfZ1jaDoHI', 'X0E675OtXS', 'e0194xRTf0', 1, '2003-08-30 23:04:44');
+INSERT INTO `detection` VALUES (2, 70, 'gcGExDoCDd', 'EH2x0sJ84L', 'z2sTQmRz0x', 'v5cUJabPB6', 1, '2014-03-03 18:06:16');
+INSERT INTO `detection` VALUES (3, 125, 'a0ZirrRsSI', '8jSLI6qJF9', 's1jmJJC6Fo', 'lh9ks2lBHk', 0, '2020-07-01 17:23:37');
+INSERT INTO `detection` VALUES (4, 463, 'QgSwNRgLGD', 'qcPbHvZyKA', 'ELuec2fXOi', 'XpI3ZmFUzs', 0, '2017-09-15 09:01:04');
+INSERT INTO `detection` VALUES (5, 713, 'hLBTGPOsoE', 'bbNImLofkX', 'cV9xRX0uTt', 'o6gchcDxRA', 0, '2015-05-15 23:20:40');
+INSERT INTO `detection` VALUES (6, 555, 'TPLsSpQ6WH', 'NVwULzkWSp', 'g2vVdovg8i', 'bc5Rd1parm', 0, '2004-12-30 03:40:11');
+INSERT INTO `detection` VALUES (7, 930, 'uoMdNP4eYk', 'qQiBNPumun', 'yMlQubqJvA', '7DLGr66RZd', 1, '2011-03-07 18:13:48');
+INSERT INTO `detection` VALUES (8, 4, 'oQ7sNm7xfd', 'MMhTK6LCQ1', 'KEHmnsuJjQ', 'GxMgh275lU', 1, '2015-01-12 16:22:30');
+INSERT INTO `detection` VALUES (9, 383, 'ZseY2fZWdx', 'XhZT2mENlN', 'jRCdbVfdJq', 'lS09qFrVOq', 1, '2006-12-01 20:33:15');
+INSERT INTO `detection` VALUES (10, 406, 'zhRVMy8GiJ', 'RtyfSNN3vo', '0zUwg5AFxJ', 'ggJO9ozNM1', 1, '2022-01-07 04:40:50');
+INSERT INTO `detection` VALUES (11, 710, 'fTzHDNac7j', '1XwfsnfdLN', 'n8pdjxgBvP', 'v3MiHrZoP7', 1, '2022-01-01 15:33:28');
+INSERT INTO `detection` VALUES (12, 459, 'pXAIySMBtp', 'zZrRjhfDAs', 'w4Q65eWp8J', 'j90YbFRo9A', 1, '2013-11-19 18:41:19');
+INSERT INTO `detection` VALUES (13, 456, 'nUIBMS8L1n', 'XQcYVl2Dkn', '0luLJ9j1Gf', '4x5FxDlyyx', 1, '2006-03-17 14:48:57');
+INSERT INTO `detection` VALUES (14, 472, 'PM6BlpEfir', 'MoQd7NOpa4', 'AfWC28ynH2', 'pa4SaGKJGf', 1, '2012-08-25 20:17:35');
+INSERT INTO `detection` VALUES (15, 218, '0QejJ5zhaL', 'cNvQZUUSC2', 'K7T9mCyKjI', 'QTux2wtUpc', 1, '2012-07-07 22:24:24');
+INSERT INTO `detection` VALUES (16, 635, '9cfz4kDXrh', 'LOuZ6RYiEj', 'vNkjg7HgXh', 'KaoGvrtP3x', 1, '2005-10-06 06:01:41');
+INSERT INTO `detection` VALUES (17, 60, 'VQpKjTX9at', 'm4ipzMwBfh', 'szHwrjaY5l', 'B6OfWJVJhP', 1, '2008-07-17 19:31:18');
+INSERT INTO `detection` VALUES (18, 878, 'VQ9bKsLA35', 'TnPYeuMvmR', 'fePxDp4mrh', 'LY8tqWCZZQ', 1, '2007-01-07 23:37:02');
+INSERT INTO `detection` VALUES (19, 311, 'qkCjUP4iPQ', 'mY7RDeLXaV', 'Xcg1fobeuE', '98Fh9fu8oB', 1, '2001-06-26 12:58:37');
+INSERT INTO `detection` VALUES (20, 127, '1mxNB0ENmI', 'bbzeLZSDFS', '7ylL7sczDi', 'RR3U6cmDft', 1, '2006-11-24 19:48:09');
 
 -- ----------------------------
 -- Table structure for farmer
@@ -67,7 +87,7 @@ CREATE TABLE `grow_info`  (
   `create_time` datetime NULL DEFAULT NULL,
   `update_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of grow_info
@@ -188,22 +208,6 @@ CREATE TABLE `role_application`  (
 
 -- ----------------------------
 -- Records of role_application
--- ----------------------------
-
--- ----------------------------
--- Table structure for search
--- ----------------------------
-DROP TABLE IF EXISTS `search`;
-CREATE TABLE `search`  (
-  `sid` int NOT NULL COMMENT '查询id',
-  `uid` int NULL DEFAULT NULL COMMENT '查询用户',
-  `time` datetime NULL DEFAULT NULL COMMENT '查询时间',
-  `pid` int NULL DEFAULT NULL COMMENT '查询内容',
-  PRIMARY KEY (`sid`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of search
 -- ----------------------------
 
 -- ----------------------------

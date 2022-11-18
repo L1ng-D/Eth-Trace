@@ -15,6 +15,7 @@
     <description>Eth-Trace</description>
     <properties>
         <java.version>1.8</java.version>
+        <solidity.version>0.8.17</solidity.version>
     </properties>
 
     <dependencies>
@@ -59,9 +60,6 @@
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
         </dependency>
-
-
-
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -119,17 +117,40 @@
 
 
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.web3j</groupId>
+                <artifactId>web3j-maven-plugin</artifactId>
+                <version>4.8.7</version>
+                <configuration>
+                    <packageName>com.ling.contract</packageName>
+                    <sourceDestination>src/main/java</sourceDestination>
+                    <nativeJavaType>true</nativeJavaType>
+                    <outputFormat>java</outputFormat>
+                    <soliditySourceFiles>
+                        <directory>src/main/resources/solidity</directory>
+                        <includes>
+                            <include>**/*.sol</include>
+                        </includes>
+                    </soliditySourceFiles>
+                    <outputDirectory>
+                        <java>src/main/java</java>
+                        <bin>src/main/resources</bin>
+                        <abi>src/main/resources</abi>
+                    </outputDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 
-        <build>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-            </plugins>
-        </build>
+
 
 
 
