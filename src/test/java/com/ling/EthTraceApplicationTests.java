@@ -1,6 +1,7 @@
 package com.ling;
 
 import com.ling.contract.Counter_sol_Counter;
+import com.ling.contract.Counter_sol_cProduct;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.web3j.abi.datatypes.generated.Bytes32;
@@ -12,6 +13,7 @@ import org.web3j.protocol.core.methods.response.Web3ClientVersion;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.utils.Numeric;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
@@ -22,9 +24,34 @@ class EthTraceApplicationTests {
 
     private Web3j web3j = Web3j.build(new HttpService("http://localhost:8545"));
     // 通过账户私钥，选择钱包账户
-    private Credentials credentials = Credentials.create("8f5da367bbc640e5f82b94244555dd060415d580488e6f283664482591408a6d");
+    private Credentials credentials = Credentials.create("a0b9db7483112c28fa3844a06ef889f125333b6ef554692ed8ca5643dd82410b");
     // 已部署合约地址
-    final String CONTRACT_ADDRESS = "0x8b068c8B15F2AAFC2DA9f8f4b9BEeC536793a59b";
+    final String CONTRACT_ADDRESS = "0xB44DbF8a6A1345d944EDE8117f1b247636BeF8fe";
+
+    @Test
+    public void productTest() throws IOException, ExecutionException, InterruptedException {
+        // 设置gas相关参数
+        BigInteger gasLimit = new BigInteger("4700000");
+        BigInteger gasPrices = web3j.ethGasPrice().send().getGasPrice();
+
+        Counter_sol_cProduct solCProduct = Counter_sol_cProduct
+                .load(CONTRACT_ADDRESS, web3j, credentials, gasPrices, gasLimit);
+        
+        // 保存农产品
+        Counter_sol_cProduct.Product product = solCProduct.get(BigInteger.valueOf(1)).sendAsync().get();
+        if (product != null){
+            System.out.println("product000.toString() = " + product.toString());
+        }else {
+            solCProduct.save(BigInteger.valueOf(1), new Counter_sol_cProduct.Product(
+                    "苹果牛奶", BigInteger.valueOf(1), "猛牛公司", "area", BigInteger.valueOf(1), "aaaa.img"
+            )).sendAsync().get();
+        }
+
+        product = solCProduct.get(BigInteger.valueOf(1)).sendAsync().get();
+
+        System.out.println("product.toString() = " + product.toString());
+
+    }
 
     @Test
     public void testContract() throws Exception {

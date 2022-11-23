@@ -27,6 +27,11 @@ public class UserController {
         return userService.login(user);
     }
 
+    @GetMapping("/page")
+    public Result page(int page, int pageSize, String name){
+        return userService.queryWithPage(page, pageSize, name);
+    }
+
 
 
 

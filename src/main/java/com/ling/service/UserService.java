@@ -9,4 +9,6 @@ public interface UserService extends IService<User> {
     Result register(RegisterFormDto registerFormDTO);
 
     Result login(User user);
+
+    Result queryWithPage(int page, int pageSize, String name);
 }

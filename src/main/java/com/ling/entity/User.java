@@ -25,6 +25,8 @@ public class User implements Serializable {
 
     private Integer role;
 
+    private Integer isDelete;
+
     /**
      * 创建时间
      */

@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 18/11/2022 19:33:06
+ Date: 23/11/2022 19:34:53
 */
 
 SET NAMES utf8mb4;
@@ -175,7 +175,7 @@ CREATE TABLE `product_crop`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `product_id` int NULL DEFAULT NULL COMMENT '农产品id',
   `crop_id` int NULL DEFAULT NULL COMMENT '农作物id',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NULL DEFAULT NULL,
   `create_time` datetime NULL DEFAULT NULL,
   `update_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
@@ -240,27 +240,28 @@ CREATE TABLE `tb_user`  (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `user_name` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NOT NULL,
-  `role` int NOT NULL COMMENT '0普通用户  1供应商  2管理员',
+  `role` int NOT NULL COMMENT '0普通用户  1管理员  2供应商',
   `is_delete` int NULL DEFAULT NULL,
   `create_time` datetime NULL DEFAULT NULL,
   `update_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_user
 -- ----------------------------
-INSERT INTO `tb_user` VALUES (1, 'aaaaaa', 'mim7wavd9emj3c9m4cfc@ec17548dae85f86889c656dc3663ea8f', 0, NULL, NULL, NULL);
-INSERT INTO `tb_user` VALUES (2, 'aaaaaaa', 'jq8pc4aechrjhed4tat0@36a01211f50ca1df69ec6f886b91aabb', 0, NULL, NULL, NULL);
-INSERT INTO `tb_user` VALUES (3, 'aaaa', '02ngfm3yjd96xycye3f2@66c271609e74505feae59aa9a58904d6', 0, NULL, '2022-10-24 18:18:55', NULL);
-INSERT INTO `tb_user` VALUES (4, 'aaa0a', '3gykc3x1xtm4m9z8k68s@34523952e7d2c33423318be95918af7a', 0, NULL, '2022-10-24 18:20:05', NULL);
-INSERT INTO `tb_user` VALUES (5, 'ling', '1ge395xpswqzphi1jf61@ab55399710bfb781439f3274cdad375b', 0, NULL, '2022-10-24 18:58:17', NULL);
-INSERT INTO `tb_user` VALUES (7, 'admin', 'yzh9l1aql661kj7wjnhe@c6c5223a665b0eeb31db54aa3401214c', 1, NULL, '2022-10-25 23:18:49', NULL);
-INSERT INTO `tb_user` VALUES (8, 'admin1', '56azj7jo1voxheir99xx@61eac7666d6785a4e04bc50695d68d2e', 0, NULL, '2022-10-25 23:19:04', NULL);
-INSERT INTO `tb_user` VALUES (9, 'admin2', 'dpmtp81yhtvkobtufwwg@35c740b87cfc2cca8dbc6db41e53bdcc', 0, NULL, '2022-10-25 23:19:15', NULL);
-INSERT INTO `tb_user` VALUES (10, 'admin3', '54mp07otb096gp8d65fb@6f46cfe58e5f1ea125b5e1230aa91d9e', 0, NULL, '2022-10-25 23:20:29', NULL);
-INSERT INTO `tb_user` VALUES (11, 'a', 'kjlscnjoly5ut73f2kwe@9d732539fa34ca5d4949a4676019db41', 0, NULL, '2022-10-25 23:24:14', NULL);
-INSERT INTO `tb_user` VALUES (12, 'aa', 'akt3tmubfecxmushc0ct@333e869794f758727f2c6fbdefe71f53', 0, NULL, '2022-10-25 23:25:48', NULL);
-INSERT INTO `tb_user` VALUES (13, 'lingd', '4za7fez3jf8x6tib8b29@8ab2ff6e62237f82b4276c24b400d0a2', 0, NULL, '2022-10-26 15:35:15', NULL);
+INSERT INTO `tb_user` VALUES (1, 'aaaaaa', 'mim7wavd9emj3c9m4cfc@ec17548dae85f86889c656dc3663ea8f', 0, 0, '2022-11-23 18:48:24', NULL);
+INSERT INTO `tb_user` VALUES (2, 'aaaaaaa', 'jq8pc4aechrjhed4tat0@36a01211f50ca1df69ec6f886b91aabb', 0, 0, '2022-11-03 18:48:26', NULL);
+INSERT INTO `tb_user` VALUES (3, 'aaaa', '02ngfm3yjd96xycye3f2@66c271609e74505feae59aa9a58904d6', 0, 0, '2022-10-24 18:18:55', NULL);
+INSERT INTO `tb_user` VALUES (4, 'aaa0a', '3gykc3x1xtm4m9z8k68s@34523952e7d2c33423318be95918af7a', 0, 0, '2022-10-24 18:20:05', NULL);
+INSERT INTO `tb_user` VALUES (5, 'ling', '1ge395xpswqzphi1jf61@ab55399710bfb781439f3274cdad375b', 0, 0, '2022-10-24 18:58:17', NULL);
+INSERT INTO `tb_user` VALUES (7, 'admin', 'yzh9l1aql661kj7wjnhe@c6c5223a665b0eeb31db54aa3401214c', 1, 0, '2022-10-25 23:18:49', NULL);
+INSERT INTO `tb_user` VALUES (8, 'admin1', '56azj7jo1voxheir99xx@61eac7666d6785a4e04bc50695d68d2e', 0, 0, '2022-10-25 23:19:04', NULL);
+INSERT INTO `tb_user` VALUES (9, 'admin2', 'dpmtp81yhtvkobtufwwg@35c740b87cfc2cca8dbc6db41e53bdcc', 0, 0, '2022-10-25 23:19:15', NULL);
+INSERT INTO `tb_user` VALUES (10, 'admin3', '54mp07otb096gp8d65fb@6f46cfe58e5f1ea125b5e1230aa91d9e', 0, 0, '2022-10-25 23:20:29', NULL);
+INSERT INTO `tb_user` VALUES (11, 'a', 'kjlscnjoly5ut73f2kwe@9d732539fa34ca5d4949a4676019db41', 0, 1, '2022-10-25 23:24:14', NULL);
+INSERT INTO `tb_user` VALUES (12, 'aa', 'akt3tmubfecxmushc0ct@333e869794f758727f2c6fbdefe71f53', 0, 1, '2022-10-25 23:25:48', NULL);
+INSERT INTO `tb_user` VALUES (13, 'lingd', '4za7fez3jf8x6tib8b29@8ab2ff6e62237f82b4276c24b400d0a2', 0, 1, '2022-10-26 15:35:15', NULL);
+INSERT INTO `tb_user` VALUES (14, 'lixuyang', '123456', 2, 0, '2022-11-23 18:55:04', '2022-11-23 18:55:06');
 
 SET FOREIGN_KEY_CHECKS = 1;
