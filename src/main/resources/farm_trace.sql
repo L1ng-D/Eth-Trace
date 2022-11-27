@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 23/11/2022 19:34:53
+ Date: 27/11/2022 17:16:14
 */
 
 SET NAMES utf8mb4;
@@ -87,7 +87,7 @@ CREATE TABLE `grow_info`  (
   `create_time` datetime NULL DEFAULT NULL,
   `update_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of grow_info
@@ -98,19 +98,47 @@ CREATE TABLE `grow_info`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `logistics`;
 CREATE TABLE `logistics`  (
-  `lid` int NOT NULL COMMENT '物流id',
-  `pid` int NULL DEFAULT NULL COMMENT '产品id',
-  `time` datetime NULL DEFAULT NULL COMMENT '时间',
-  `place` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '地点',
-  `tid` int NULL DEFAULT NULL COMMENT '订单编号',
-  `status` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '订单状态',
-  `postman` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '配送员',
-  PRIMARY KEY (`lid`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '物流id',
+  `product_id` bigint NULL DEFAULT NULL COMMENT '产品id',
+  `name` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NULL DEFAULT NULL COMMENT '商品名',
+  `company` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NULL DEFAULT NULL,
+  `area` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NULL DEFAULT NULL,
+  `destination` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NULL DEFAULT NULL COMMENT '目的地',
+  `create_time` datetime NULL DEFAULT NULL,
+  `update_time` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of logistics
 -- ----------------------------
+INSERT INTO `logistics` VALUES (1, 1, '牛肉干', '猛牛公司', '内蒙古', '杭州电子科技大学', '2022-11-16 13:50:36', '2022-11-16 13:50:38');
+INSERT INTO `logistics` VALUES (2, 2, '苹果牛奶', '毅力公司', '北京', '浙江传媒学院', '2022-11-27 13:53:02', '2022-11-27 13:53:06');
+INSERT INTO `logistics` VALUES (3, 1, '牛肉干', '猛牛公司', '内蒙古', '浙江理工大学', '2022-11-27 13:53:20', '2022-11-27 13:53:23');
+
+-- ----------------------------
+-- Table structure for logistics_info
+-- ----------------------------
+DROP TABLE IF EXISTS `logistics_info`;
+CREATE TABLE `logistics_info`  (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `logistics_id` bigint NULL DEFAULT NULL,
+  `info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '快递信息',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of logistics_info
+-- ----------------------------
+INSERT INTO `logistics_info` VALUES (1, 1, '【内蒙古呼和浩特市公司】已收件', '2022-11-25 16:54:21');
+INSERT INTO `logistics_info` VALUES (2, 1, '【内蒙古x公司】已发出 下一站【杭州中心】', '2022-11-25 17:55:15');
+INSERT INTO `logistics_info` VALUES (3, 1, '【杭州转运中心】已收入', '2022-11-26 16:55:47');
+INSERT INTO `logistics_info` VALUES (4, 1, '【派送中】xxxx', '2022-11-26 18:57:10');
+INSERT INTO `logistics_info` VALUES (5, 1, '【已签收】本人签收', '2022-11-27 16:57:46');
+INSERT INTO `logistics_info` VALUES (6, 2, '【xxx】已发货', '2022-11-09 16:58:00');
+INSERT INTO `logistics_info` VALUES (7, 2, '【xxx】已发出', '2022-11-10 16:58:23');
+INSERT INTO `logistics_info` VALUES (8, 3, '【xxxx】不想发货', '2022-11-18 16:58:44');
 
 -- ----------------------------
 -- Table structure for product
@@ -133,8 +161,8 @@ CREATE TABLE `product`  (
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES (1, '牛肉干', 1, '猛牛', '内蒙古', 1, 'aaa.jpg', '0xjklsdf89asdaadf', '2022-10-13 11:12:47', '2022-10-25 11:12:52');
-INSERT INTO `product` VALUES (2, '苹果牛奶', 1, '牛公司', '北京', 1, 'Il9e1VgcU3', '0tZcRDs8Iw', '2015-08-04 23:22:52', '2008-06-04 11:47:16');
+INSERT INTO `product` VALUES (1, '牛肉干', 1, '猛牛公司', '内蒙古', 1, 'aaa.jpg', '0xjklsdf89asdaadf', '2022-10-13 11:12:47', '2022-10-25 11:12:52');
+INSERT INTO `product` VALUES (2, '苹果牛奶', 1, '毅力公司', '北京', 1, 'Il9e1VgcU3', '0tZcRDs8Iw', '2015-08-04 23:22:52', '2008-06-04 11:47:16');
 INSERT INTO `product` VALUES (3, 'Ryan Martin', 1, 'Miguel Food LLC', 'OuKFvUrNy5', 0, 'JfAPtZq5wM', 'Gz7Xqr4f8I', '2006-03-15 14:22:06', '2011-05-12 17:24:15');
 INSERT INTO `product` VALUES (4, 'Song Xiaoming', 0, 'Kelley Brothers Inc.', 'MgC0DSpwYJ', 1, '8xX1H71zI2', 'oq7QTNFAem', '2021-03-13 08:56:56', '2005-02-27 06:58:59');
 INSERT INTO `product` VALUES (5, 'Eddie Morris', 0, 'Daisuke Corporation', 'PXerdNEK3o', 0, 'zkxTro1ami', 'x8LDqaSG8D', '2006-02-03 14:28:50', '2002-11-23 07:09:09');
