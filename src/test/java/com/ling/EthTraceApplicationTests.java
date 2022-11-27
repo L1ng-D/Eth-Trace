@@ -38,14 +38,16 @@ class EthTraceApplicationTests {
                 .load(CONTRACT_ADDRESS, web3j, credentials, gasPrices, gasLimit);
         
         // 保存农产品
+
         Counter_sol_cProduct.Product product = solCProduct.get(BigInteger.valueOf(1)).sendAsync().get();
+
         if (product != null){
             System.out.println("product000.toString() = " + product.toString());
-        }else {
+        }
             solCProduct.save(BigInteger.valueOf(1), new Counter_sol_cProduct.Product(
                     "苹果牛奶", BigInteger.valueOf(1), "猛牛公司", "area", BigInteger.valueOf(1), "aaaa.img"
             )).sendAsync().get();
-        }
+
 
         product = solCProduct.get(BigInteger.valueOf(1)).sendAsync().get();
 

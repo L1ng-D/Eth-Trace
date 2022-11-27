@@ -10,5 +10,5 @@ public interface UserService extends IService<User> {
 
     Result login(User user);
 
-    Result queryWithPage(int page, int pageSize, String name);
+    Result queryWithPage(int page, int pageSize, String name, Integer isDelete, Integer role);
 }

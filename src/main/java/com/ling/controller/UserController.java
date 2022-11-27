@@ -28,11 +28,7 @@ public class UserController {
     }
 
     @GetMapping("/page")
-    public Result page(int page, int pageSize, String name){
-        return userService.queryWithPage(page, pageSize, name);
+    public Result page(int page, int pageSize, String name, Integer isDelete, Integer role){
+        return userService.queryWithPage(page, pageSize, name, isDelete, role);
     }
-
-
-
-
 }

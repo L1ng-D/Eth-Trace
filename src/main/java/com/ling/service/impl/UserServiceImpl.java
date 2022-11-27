@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ling.common.Result;
 import com.ling.dto.RegisterFormDto;
-import com.ling.entity.Product;
 import com.ling.entity.User;
 import com.ling.mapper.UserMapper;
 import com.ling.service.UserService;
@@ -93,7 +92,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public Result queryWithPage(int page, int pageSize, String name) {
+    public Result queryWithPage(int page, int pageSize, String name, Integer isDelete, Integer role) {
         // 1.构造分页构造器
         Page pageInfo = new Page(page, pageSize);
 
@@ -101,6 +100,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper();
         // 3.添加一个过滤条件
         queryWrapper.like(StrUtil.isNotEmpty(name), User::getUserName, name);
+        queryWrapper.eq(isDelete != null, User::getIsDelete, isDelete);
+        queryWrapper.eq(role != null, User::getRole, role);
 
         // 添加排序条件
         queryWrapper.orderByAsc(User::getId);
