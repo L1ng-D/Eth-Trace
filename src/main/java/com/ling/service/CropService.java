@@ -7,4 +7,7 @@ import com.ling.entity.Product;
 
 
 public interface CropService extends IService<Crop> {
+    Result queryWithPage(int page, int pageSize, String name, String place);
+
+    Result queryInfo(Long id);
 }

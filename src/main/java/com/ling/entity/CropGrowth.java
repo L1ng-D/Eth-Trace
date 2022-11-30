@@ -11,19 +11,17 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("tb_logistics_info")
-public class LogisticsInfo {
+@TableName("tb_crop_growth")
+public class CropGrowth {
+
     @TableId(type = IdType.AUTO)
     @ApiModelProperty("主键")
     private Long id;
 
-    private Long logisticsId;
+    private Long cropId;
 
     private String info;
 
-
-    /**
-     * 更新时间
-     */
     private LocalDateTime updateTime;
+
 }

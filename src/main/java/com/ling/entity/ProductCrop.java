@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName("tb_product_crop")
 public class ProductCrop {
 
     @TableId(type = IdType.AUTO)
