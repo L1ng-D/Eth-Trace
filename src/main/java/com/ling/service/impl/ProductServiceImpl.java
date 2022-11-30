@@ -1,5 +1,6 @@
 package com.ling.service.impl;
 
+import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,6 +51,18 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
 
         // 执行查询
         page(pageInfo, queryWrapper);
+        List<Product> records = pageInfo.getRecords();
+        List<ProductDto> re = new ArrayList<>();
+        for (Product record : records) {
+            ProductDto productDto = new ProductDto();
+            Long productId = record.getId();
+            List<ProductCrop> crops = productCropService.list(new LambdaQueryWrapper<ProductCrop>().eq(ProductCrop::getProductId, productId));
+            ProductDto convert = Convert.convert(ProductDto.class, record);
+            convert.setCrops(crops);
+            re.add(convert);
+        }
+
+        pageInfo.setRecords(re);
 
         return Result.ok(pageInfo);
     }
