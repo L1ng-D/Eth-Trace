@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 30/11/2022 23:02:58
+ Date: 07/12/2022 01:09:29
 */
 
 SET NAMES utf8mb4;
@@ -282,5 +282,23 @@ INSERT INTO `tb_user` VALUES (11, 'a', 'kjlscnjoly5ut73f2kwe@9d732539fa34ca5d494
 INSERT INTO `tb_user` VALUES (12, 'aa', 'akt3tmubfecxmushc0ct@333e869794f758727f2c6fbdefe71f53', 0, 1, '2022-10-25 23:25:48', NULL);
 INSERT INTO `tb_user` VALUES (13, 'lingd', '4za7fez3jf8x6tib8b29@8ab2ff6e62237f82b4276c24b400d0a2', 0, 1, '2022-10-26 15:35:15', NULL);
 INSERT INTO `tb_user` VALUES (14, 'lixuyang', '123456', 2, 0, '2022-11-23 18:55:04', '2022-11-23 18:55:06');
+
+-- ----------------------------
+-- Table structure for tb_user_application
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_user_application`;
+CREATE TABLE `tb_user_application`  (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint NULL DEFAULT NULL,
+  `file` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NULL DEFAULT NULL,
+  `status` int NULL DEFAULT NULL COMMENT '0待审批  1：通过  2：驳回',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tb_user_application
+-- ----------------------------
+INSERT INTO `tb_user_application` VALUES (1, 1, 'xxx.word', 0);
+INSERT INTO `tb_user_application` VALUES (2, 2, 'xx.pdf', 0);
 
 SET FOREIGN_KEY_CHECKS = 1;

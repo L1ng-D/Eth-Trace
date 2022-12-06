@@ -1,4 +1,4 @@
-package com.ling.entity;
+package com.ling.dto;
 
 import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModelProperty;

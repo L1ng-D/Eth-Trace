@@ -7,13 +7,11 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ling.common.Result;
 import com.ling.dto.ProductDto;
-import com.ling.entity.Crop;
 import com.ling.entity.Product;
-import com.ling.entity.ProductCrop;
+import com.ling.dto.ProductCrop;
 import com.ling.mapper.ProductMapper;
 import com.ling.service.ProductCropService;
 import com.ling.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -54,7 +52,6 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         List<Product> records = pageInfo.getRecords();
         List<ProductDto> re = new ArrayList<>();
         for (Product record : records) {
-            ProductDto productDto = new ProductDto();
             Long productId = record.getId();
             List<ProductCrop> crops = productCropService.list(new LambdaQueryWrapper<ProductCrop>().eq(ProductCrop::getProductId, productId));
             ProductDto convert = Convert.convert(ProductDto.class, record);
