@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -30,10 +31,16 @@ public class CropController {
     @PostMapping("/add")
     public Result add(@RequestBody Crop crop){
         log.info("log =========> {}", crop.toString());
+        log.info("userHolder =======> {}", UserHolder.getUser());
         crop.setUserId(UserHolder.getUser().getId());
-
         cropService.save(crop);
         return Result.ok(crop);
+    }
+
+    @GetMapping("/all")
+    public Result all(){
+        List<Crop> list = cropService.list();
+        return Result.ok(list);
     }
 
 

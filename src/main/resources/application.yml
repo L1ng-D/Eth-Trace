@@ -13,10 +13,9 @@ spring:
 
 mybatis-plus:
   type-aliases-package: com.ling.entity # 别名扫描包
-  mybatis-plus:
-    global-config:
-      db-config:
-        id-type: auto
+  global-config:
+    db-config:
+      id-type: auto
 farm:
   path: D:\farm\img\
 #    path: /root/SpringBoot/files/

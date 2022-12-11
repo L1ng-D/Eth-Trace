@@ -11,10 +11,12 @@ import com.ling.mapper.UserMapper;
 import com.ling.service.UserService;
 import com.ling.util.PasswordEncoder;
 import com.ling.util.UserHolder;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
@@ -87,6 +89,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
 
         UserHolder.saveUser(user);
+        log.info("userHolder =======> {}", UserHolder.getUser());
 
         return Result.ok(user);
     }
