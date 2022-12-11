@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 07/12/2022 01:09:29
+ Date: 11/12/2022 21:41:38
 */
 
 SET NAMES utf8mb4;
@@ -24,6 +24,7 @@ DROP TABLE IF EXISTS `tb_crop`;
 CREATE TABLE `tb_crop`  (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `user_id` bigint NULL DEFAULT NULL COMMENT '供应商id',
   `plant_time` datetime NULL DEFAULT NULL,
   `plant_place` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `plant_num` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
@@ -35,29 +36,29 @@ CREATE TABLE `tb_crop`  (
 -- ----------------------------
 -- Records of tb_crop
 -- ----------------------------
-INSERT INTO `tb_crop` VALUES (1, '苹果', '2022-11-09 18:41:08', '北京', '111', '2022-11-16 18:41:24', '2022-11-30 22:35:40');
-INSERT INTO `tb_crop` VALUES (2, '牛奶', '2022-11-15 18:41:38', '内蒙古', '1', '2022-11-15 18:41:46', '2022-11-30 22:35:43');
-INSERT INTO `tb_crop` VALUES (3, '牛', '2022-11-16 18:43:04', '内蒙古', '999', '2022-11-08 18:43:18', '2022-11-30 22:35:47');
-INSERT INTO `tb_crop` VALUES (4, 'Sato Hikaru', '2017-06-23 17:11:10', 'cYFmpw7SQS', '666', '2014-10-11 19:13:04', '2011-01-16 03:53:18');
-INSERT INTO `tb_crop` VALUES (5, 'Lui On Na', '2001-07-30 12:41:08', 'KMLufn79tK', '666', '2020-04-12 18:35:13', '2015-11-19 05:33:52');
-INSERT INTO `tb_crop` VALUES (6, 'Ye Yunxi', '2013-04-13 07:26:59', 'CCqWra6YYP', '666', '2007-12-03 15:07:18', '2000-06-29 20:56:48');
-INSERT INTO `tb_crop` VALUES (7, 'Ye Yunxi', '2014-01-22 23:43:11', 'LQZisbEQt6', '666', '2014-05-22 19:06:00', '2006-02-22 14:44:02');
-INSERT INTO `tb_crop` VALUES (8, 'Suzuki Momoe', '2001-06-02 18:58:37', 'SJZ23nQkHV', '666', '2013-10-21 13:24:37', '2007-11-15 14:19:01');
-INSERT INTO `tb_crop` VALUES (9, 'Liang Zhennan', '2001-12-10 08:31:31', 'E7rnaDarzc', '666', '2010-05-18 19:25:09', '2006-08-30 05:19:17');
-INSERT INTO `tb_crop` VALUES (10, 'Jiang Xiaoming', '2022-06-29 06:16:18', 'uMvZUNdQEo', '666', '2003-05-10 16:26:14', '2020-02-22 14:59:24');
-INSERT INTO `tb_crop` VALUES (11, 'Ueda Aoshi', '2015-06-11 23:15:25', 'VyJnyjiBL9', '666', '2021-07-26 10:52:24', '2004-01-07 16:41:57');
-INSERT INTO `tb_crop` VALUES (12, 'Mok On Kay', '2006-06-16 17:52:18', 'cpl2rQHCXz', '666', '2008-05-21 21:01:08', '2011-10-17 07:24:37');
-INSERT INTO `tb_crop` VALUES (13, 'Hao Lu', '2015-10-18 14:35:31', 'GV0BCyD4CF', '666', '2011-05-26 12:33:44', '2016-06-07 07:32:45');
-INSERT INTO `tb_crop` VALUES (14, 'To Kwok Wing', '2012-02-09 17:01:39', 'Lu4vGXjgLD', '666', '2004-12-09 19:51:00', '2010-03-13 14:06:47');
-INSERT INTO `tb_crop` VALUES (15, 'Yao Lu', '2015-06-22 01:47:58', 'Rc0oBJCeNi', '666', '2018-05-06 08:48:28', '2005-10-22 19:33:26');
-INSERT INTO `tb_crop` VALUES (16, 'Long Yunxi', '2003-02-22 06:06:43', 'QhbUGdst2m', '666', '2018-06-02 15:14:01', '2002-02-10 09:14:28');
-INSERT INTO `tb_crop` VALUES (17, 'Nakagawa Yuto', '2001-12-08 02:45:18', 'YGjri88tUS', '666', '2009-05-25 22:58:07', '2012-07-20 09:47:06');
-INSERT INTO `tb_crop` VALUES (18, 'Kevin Fox', '2014-09-26 21:42:14', 'Tt65VFAxE4', '666', '2000-08-04 22:44:25', '2006-10-30 06:48:41');
-INSERT INTO `tb_crop` VALUES (19, 'Lau Tin Wing', '2018-05-26 12:11:07', '576oAce3iX', '666', '2003-02-06 14:00:21', '2020-03-14 20:44:37');
-INSERT INTO `tb_crop` VALUES (20, 'Fujiwara Momoka', '2008-02-08 16:13:22', 'C8YslX5aUY', '666', '2009-01-15 15:56:14', '2017-03-13 14:54:09');
-INSERT INTO `tb_crop` VALUES (21, 'Lisa Chavez', '2019-08-08 12:35:16', 'Y6niuM6D5X', '666', '2008-09-10 16:49:25', '2006-03-22 07:10:24');
-INSERT INTO `tb_crop` VALUES (22, 'Cheryl Ellis', '2017-09-08 03:25:43', 'QSWfeWQBLM', '666', '2020-06-09 10:55:09', '2019-05-16 03:12:16');
-INSERT INTO `tb_crop` VALUES (23, 'Ono Takuya', '2010-07-09 06:08:09', 'bgOv6zn4Ly', '666', '2002-12-10 17:09:05', '2007-10-01 15:47:30');
+INSERT INTO `tb_crop` VALUES (1, '苹果', 8, '2022-11-09 18:41:08', '北京', '111', '2022-11-16 18:41:24', '2022-11-30 22:35:40');
+INSERT INTO `tb_crop` VALUES (2, '牛奶', 9, '2022-11-15 18:41:38', '内蒙古', '1', '2022-11-15 18:41:46', '2022-11-30 22:35:43');
+INSERT INTO `tb_crop` VALUES (3, '牛', 10, '2022-11-16 18:43:04', '内蒙古', '999', '2022-11-08 18:43:18', '2022-11-30 22:35:47');
+INSERT INTO `tb_crop` VALUES (4, 'Sato Hikaru', 8, '2017-06-23 17:11:10', 'cYFmpw7SQS', '666', '2014-10-11 19:13:04', '2011-01-16 03:53:18');
+INSERT INTO `tb_crop` VALUES (5, 'Lui On Na', 8, '2001-07-30 12:41:08', 'KMLufn79tK', '666', '2020-04-12 18:35:13', '2015-11-19 05:33:52');
+INSERT INTO `tb_crop` VALUES (6, 'Ye Yunxi', 8, '2013-04-13 07:26:59', 'CCqWra6YYP', '666', '2007-12-03 15:07:18', '2000-06-29 20:56:48');
+INSERT INTO `tb_crop` VALUES (7, 'Ye Yunxi', 8, '2014-01-22 23:43:11', 'LQZisbEQt6', '666', '2014-05-22 19:06:00', '2006-02-22 14:44:02');
+INSERT INTO `tb_crop` VALUES (8, 'Suzuki Momoe', 8, '2001-06-02 18:58:37', 'SJZ23nQkHV', '666', '2013-10-21 13:24:37', '2007-11-15 14:19:01');
+INSERT INTO `tb_crop` VALUES (9, 'Liang Zhennan', 8, '2001-12-10 08:31:31', 'E7rnaDarzc', '666', '2010-05-18 19:25:09', '2006-08-30 05:19:17');
+INSERT INTO `tb_crop` VALUES (10, 'Jiang Xiaoming', 8, '2022-06-29 06:16:18', 'uMvZUNdQEo', '666', '2003-05-10 16:26:14', '2020-02-22 14:59:24');
+INSERT INTO `tb_crop` VALUES (11, 'Ueda Aoshi', 8, '2015-06-11 23:15:25', 'VyJnyjiBL9', '666', '2021-07-26 10:52:24', '2004-01-07 16:41:57');
+INSERT INTO `tb_crop` VALUES (12, 'Mok On Kay', 9, '2006-06-16 17:52:18', 'cpl2rQHCXz', '666', '2008-05-21 21:01:08', '2011-10-17 07:24:37');
+INSERT INTO `tb_crop` VALUES (13, 'Hao Lu', 9, '2015-10-18 14:35:31', 'GV0BCyD4CF', '666', '2011-05-26 12:33:44', '2016-06-07 07:32:45');
+INSERT INTO `tb_crop` VALUES (14, 'To Kwok Wing', 9, '2012-02-09 17:01:39', 'Lu4vGXjgLD', '666', '2004-12-09 19:51:00', '2010-03-13 14:06:47');
+INSERT INTO `tb_crop` VALUES (15, 'Yao Lu', 9, '2015-06-22 01:47:58', 'Rc0oBJCeNi', '666', '2018-05-06 08:48:28', '2005-10-22 19:33:26');
+INSERT INTO `tb_crop` VALUES (16, 'Long Yunxi', 9, '2003-02-22 06:06:43', 'QhbUGdst2m', '666', '2018-06-02 15:14:01', '2002-02-10 09:14:28');
+INSERT INTO `tb_crop` VALUES (17, 'Nakagawa Yuto', 9, '2001-12-08 02:45:18', 'YGjri88tUS', '666', '2009-05-25 22:58:07', '2012-07-20 09:47:06');
+INSERT INTO `tb_crop` VALUES (18, 'Kevin Fox', 10, '2014-09-26 21:42:14', 'Tt65VFAxE4', '666', '2000-08-04 22:44:25', '2006-10-30 06:48:41');
+INSERT INTO `tb_crop` VALUES (19, 'Lau Tin Wing', 10, '2018-05-26 12:11:07', '576oAce3iX', '666', '2003-02-06 14:00:21', '2020-03-14 20:44:37');
+INSERT INTO `tb_crop` VALUES (20, 'Fujiwara Momoka', 10, '2008-02-08 16:13:22', 'C8YslX5aUY', '666', '2009-01-15 15:56:14', '2017-03-13 14:54:09');
+INSERT INTO `tb_crop` VALUES (21, 'Lisa Chavez', 10, '2019-08-08 12:35:16', 'Y6niuM6D5X', '666', '2008-09-10 16:49:25', '2006-03-22 07:10:24');
+INSERT INTO `tb_crop` VALUES (22, 'Cheryl Ellis', 10, '2017-09-08 03:25:43', 'QSWfeWQBLM', '666', '2020-06-09 10:55:09', '2019-05-16 03:12:16');
+INSERT INTO `tb_crop` VALUES (23, 'Ono Takuya', 10, '2010-07-09 06:08:09', 'bgOv6zn4Ly', '666', '2002-12-10 17:09:05', '2007-10-01 15:47:30');
 
 -- ----------------------------
 -- Table structure for tb_crop_growth
@@ -264,7 +265,7 @@ CREATE TABLE `tb_user`  (
   `create_time` datetime NULL DEFAULT NULL,
   `update_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_user
@@ -275,13 +276,14 @@ INSERT INTO `tb_user` VALUES (3, 'aaaa', '02ngfm3yjd96xycye3f2@66c271609e74505fe
 INSERT INTO `tb_user` VALUES (4, 'aaa0a', '3gykc3x1xtm4m9z8k68s@34523952e7d2c33423318be95918af7a', 0, 0, '2022-10-24 18:20:05', NULL);
 INSERT INTO `tb_user` VALUES (5, 'ling', '1ge395xpswqzphi1jf61@ab55399710bfb781439f3274cdad375b', 0, 0, '2022-10-24 18:58:17', NULL);
 INSERT INTO `tb_user` VALUES (7, 'admin', 'yzh9l1aql661kj7wjnhe@c6c5223a665b0eeb31db54aa3401214c', 1, 0, '2022-10-25 23:18:49', NULL);
-INSERT INTO `tb_user` VALUES (8, 'admin1', '56azj7jo1voxheir99xx@61eac7666d6785a4e04bc50695d68d2e', 0, 0, '2022-10-25 23:19:04', NULL);
-INSERT INTO `tb_user` VALUES (9, 'admin2', 'dpmtp81yhtvkobtufwwg@35c740b87cfc2cca8dbc6db41e53bdcc', 0, 0, '2022-10-25 23:19:15', NULL);
-INSERT INTO `tb_user` VALUES (10, 'admin3', '54mp07otb096gp8d65fb@6f46cfe58e5f1ea125b5e1230aa91d9e', 0, 0, '2022-10-25 23:20:29', NULL);
-INSERT INTO `tb_user` VALUES (11, 'a', 'kjlscnjoly5ut73f2kwe@9d732539fa34ca5d4949a4676019db41', 0, 1, '2022-10-25 23:24:14', NULL);
-INSERT INTO `tb_user` VALUES (12, 'aa', 'akt3tmubfecxmushc0ct@333e869794f758727f2c6fbdefe71f53', 0, 1, '2022-10-25 23:25:48', NULL);
+INSERT INTO `tb_user` VALUES (8, '开心农场', '56azj7jo1voxheir99xx@61eac7666d6785a4e04bc50695d68d2e', 2, 0, '2022-10-25 23:19:04', NULL);
+INSERT INTO `tb_user` VALUES (9, '快乐农场', 'dpmtp81yhtvkobtufwwg@35c740b87cfc2cca8dbc6db41e53bdcc', 2, 0, '2022-10-25 23:19:15', NULL);
+INSERT INTO `tb_user` VALUES (10, '伤心农场', '54mp07otb096gp8d65fb@6f46cfe58e5f1ea125b5e1230aa91d9e', 2, 0, '2022-10-25 23:20:29', NULL);
+INSERT INTO `tb_user` VALUES (11, 'a', 'kjlscnjoly5ut73f2kwe@9d732539fa34ca5d4949a4676019db41', 2, 1, '2022-10-25 23:24:14', NULL);
+INSERT INTO `tb_user` VALUES (12, '农场', 'akt3tmubfecxmushc0ct@333e869794f758727f2c6fbdefe71f53', 2, 1, '2022-10-25 23:25:48', NULL);
 INSERT INTO `tb_user` VALUES (13, 'lingd', '4za7fez3jf8x6tib8b29@8ab2ff6e62237f82b4276c24b400d0a2', 0, 1, '2022-10-26 15:35:15', NULL);
 INSERT INTO `tb_user` VALUES (14, 'lixuyang', '123456', 2, 0, '2022-11-23 18:55:04', '2022-11-23 18:55:06');
+INSERT INTO `tb_user` VALUES (15, '万丽', '15acf7o05ma1f1bmjc8z@6e1a6fa41d0d331fc89294eb368f7ea0', 0, NULL, '2022-12-11 14:18:44', NULL);
 
 -- ----------------------------
 -- Table structure for tb_user_application
