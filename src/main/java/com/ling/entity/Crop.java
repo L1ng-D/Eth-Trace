@@ -22,6 +22,9 @@ public class Crop {
 
     private Long userId;
 
+    private String image;
+
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime plantTime;
 
     private String plantPlace;
@@ -37,8 +40,21 @@ public class Crop {
     /**
      * 更新时间
      */
-    @TableField(fill = FieldFill.UPDATE)
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
-
+    @Override
+    public String toString() {
+        return "Crop{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", userId=" + userId +
+                ", image='" + image + '\'' +
+                ", plantTime=" + plantTime +
+                ", plantPlace='" + plantPlace + '\'' +
+                ", plantNum=" + plantNum +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
+    }
 }
