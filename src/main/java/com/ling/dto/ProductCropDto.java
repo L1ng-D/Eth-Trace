@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("tb_product_crop")
-public class ProductCrop {
+public class ProductCropDto {
 
     @TableId(type = IdType.AUTO)
     @ApiModelProperty("主键")

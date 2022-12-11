@@ -20,6 +20,8 @@ public class Crop {
 
     private String name;
 
+    private Long userId;
+
     private LocalDateTime plantTime;
 
     private String plantPlace;

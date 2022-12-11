@@ -8,6 +8,6 @@ import java.util.List;
 @Data
 public class ProductDto extends Product {
 
-    private List<ProductCrop> crops;
+    private List<ProductCropDto> crops;
 
 }

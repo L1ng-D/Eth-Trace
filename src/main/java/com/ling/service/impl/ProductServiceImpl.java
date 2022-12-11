@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ling.common.Result;
 import com.ling.dto.ProductDto;
 import com.ling.entity.Product;
-import com.ling.dto.ProductCrop;
+import com.ling.dto.ProductCropDto;
 import com.ling.mapper.ProductMapper;
 import com.ling.service.ProductCropService;
 import com.ling.service.ProductService;
@@ -53,7 +53,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         List<ProductDto> re = new ArrayList<>();
         for (Product record : records) {
             Long productId = record.getId();
-            List<ProductCrop> crops = productCropService.list(new LambdaQueryWrapper<ProductCrop>().eq(ProductCrop::getProductId, productId));
+            List<ProductCropDto> crops = productCropService.list(new LambdaQueryWrapper<ProductCropDto>().eq(ProductCropDto::getProductId, productId));
             ProductDto convert = Convert.convert(ProductDto.class, record);
             convert.setCrops(crops);
             re.add(convert);
@@ -76,7 +76,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         this.save(productDto);
 
         // 2.获取dto中的crops
-        List<ProductCrop> crops = productDto.getCrops();
+        List<ProductCropDto> crops = productDto.getCrops();
 
         // 3.给每项crop加上所属的产品id
         crops.stream().map((item) -> {

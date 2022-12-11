@@ -1,8 +1,8 @@
 package com.ling.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ling.dto.ProductCrop;
+import com.ling.dto.ProductCropDto;
 
 
-public interface ProductCropService extends IService<ProductCrop> {
+public interface ProductCropService extends IService<ProductCropDto> {
 }
