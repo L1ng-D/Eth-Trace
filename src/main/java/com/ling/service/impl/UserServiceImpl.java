@@ -72,13 +72,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (password == null) {
             return Result.fail("密码为空!");
         }
-
-        if (role == null) {
-            return Result.fail("未选择身份");
-        }
+//
+//        if (role == null) {
+//            return Result.fail("未选择身份");
+//        }
 
         // 2.查询数据库
-        User userDB = query().eq("user_name", userName).eq("role", role).one();
+        User userDB = query().eq("user_name", userName).one();
 
         if (userDB == null){
             return Result.fail("该用户不存在!");
@@ -88,10 +88,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             return Result.fail("密码错误!");
         }
 
-        UserHolder.saveUser(user);
+        UserHolder.saveUser(userDB);
         log.info("userHolder =======> {}", UserHolder.getUser());
 
-        return Result.ok(user);
+        return Result.ok(userDB);
     }
 
     @Override
