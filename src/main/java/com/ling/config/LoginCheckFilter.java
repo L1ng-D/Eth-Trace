@@ -41,6 +41,7 @@ public class LoginCheckFilter implements Filter {
         String requestURI = request.getRequestURI();
         String[] urls = new String[]{ //不需要处理的请求路径
                 "/user/login",
+                "/user/register",
                 "/doc.html/**",
                 "/swagger-resources/**",
                 "/v2/**",
