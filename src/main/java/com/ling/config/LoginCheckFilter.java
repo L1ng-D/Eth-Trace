@@ -28,6 +28,15 @@ public class LoginCheckFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
+        if (request.getSession().getAttribute("user") != null){
+
+            User user = (User) request.getSession().getAttribute("user");
+            UserHolder.saveUser(user);
+
+            filterChain.doFilter(request,response);
+            return;
+        }
+
         //1、获取本次请求的URI
         String requestURI = request.getRequestURI();
         String[] urls = new String[]{ //不需要处理的请求路径
