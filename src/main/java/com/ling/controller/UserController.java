@@ -9,15 +9,19 @@ import com.ling.entity.User;
 import com.ling.service.CropService;
 import com.ling.service.ProductCropService;
 import com.ling.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Slf4j
 @RestController
 @RequestMapping("/user")
+@Api(tags = "用户")
 public class UserController {
 
     @Resource
@@ -31,9 +35,10 @@ public class UserController {
         return userService.register(registerFormDTO);
     }
 
-    @RequestMapping("/login")
-    public Result login(@RequestBody User user){
-        return userService.login(user);
+    @PostMapping("/login")
+    @ApiOperation(value = "登录")
+    public Result login(@RequestBody User user, HttpServletRequest request){
+        return userService.login(user, request);
     }
 
     @GetMapping("/page")

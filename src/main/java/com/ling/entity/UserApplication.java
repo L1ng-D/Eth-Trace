@@ -19,6 +19,8 @@ public class UserApplication {
 
     private Long userId;
 
+    private String file;
+
     private Integer status;
 
     @TableField(exist = false)

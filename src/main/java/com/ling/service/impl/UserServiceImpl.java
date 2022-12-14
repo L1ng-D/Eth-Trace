@@ -14,6 +14,7 @@ import com.ling.util.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Slf4j
@@ -59,7 +60,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public Result login(User user) {
+    public Result login(User user, HttpServletRequest request) {
         String userName = user.getUserName();
         String password = user.getPassword();
         Integer role = user.getRole();
@@ -88,8 +89,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             return Result.fail("密码错误!");
         }
 
-        UserHolder.saveUser(userDB);
-        log.info("userHolder =======> {}", UserHolder.getUser());
+        request.getSession().setAttribute("user", userDB);
 
         return Result.ok(userDB);
     }

@@ -8,6 +8,9 @@ import com.ling.entity.User;
 import com.ling.entity.UserApplication;
 import com.ling.service.UserApplicationService;
 import com.ling.service.UserService;
+import com.ling.util.UserHolder;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 import org.web3j.abi.datatypes.Int;
 
@@ -16,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/application")
+@Api(tags = "供应商申请")
 public class ApplicationController {
 
     @Resource
@@ -23,6 +27,19 @@ public class ApplicationController {
 
     @Resource
     private UserService userService;
+
+    @ApiOperation(value = "提交申请")
+    @PostMapping("/add")
+    public Result addRequest(String file){
+        Long userId = UserHolder.getUser().getId();
+        UserApplication application = new UserApplication();
+        application.setUserId(userId);
+        application.setFile(file);
+        application.setStatus(0);
+
+        userApplicationService.save(application);
+        return Result.ok("提交申请成功");
+    }
 
     /**
      * 查看审批信息表

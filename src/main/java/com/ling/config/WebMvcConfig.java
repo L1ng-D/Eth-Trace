@@ -28,11 +28,11 @@ import java.util.List;
 @EnableKnife4j
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
-    @Override
-    protected void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginInterceptor())
-                .excludePathPatterns("/user/**", "/product/**", "/detection/**", "/logistics/**","/crop/**","/application/**" );
-    }
+//    @Override
+//    protected void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(new LoginInterceptor())
+//                .excludePathPatterns("/user/**", "/product/**", "/detection/**", "/logistics/**","/crop/**","/application/**","/doc.html" );
+//    }
 
     /**
      * 设置静态资源映射
@@ -57,22 +57,22 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     }
 
 
-//    @Bean
-//    public Docket createRestApi() {
-//        // 文档类型
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .apiInfo(apiInfo())
-//                .select()
-//                .apis(RequestHandlerSelectors.basePackage("com.ling.controller"))
-//                .paths(PathSelectors.any())
-//                .build();
-//    }
-//
-//    private ApiInfo apiInfo() {
-//        return new ApiInfoBuilder()
-//                .title("农产品溯源系统")
-//                .version("1.0")
-//                .description("农产品溯源系统接口文档")
-//                .build();
-//    }
+    @Bean
+    public Docket createRestApi() {
+        // 文档类型
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.ling.controller"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+                .title("农产品溯源系统")
+                .version("1.0")
+                .description("农产品溯源系统接口文档")
+                .build();
+    }
 }
