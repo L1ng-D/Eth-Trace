@@ -30,6 +30,8 @@ public class Detection {
 
     private Integer isValid;
 
+    private Integer countOfDetection;
+
     /**
      * 创建时间
      */

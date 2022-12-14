@@ -17,7 +17,7 @@ mybatis-plus:
     db-config:
       id-type: auto
 farm:
-  path: D:\farm\img\
+  path: D:\farm\
 #    path: /root/SpringBoot/files/
 
 
