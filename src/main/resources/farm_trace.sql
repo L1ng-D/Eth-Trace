@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 14/12/2022 13:04:20
+ Date: 14/12/2022 13:12:23
 */
 
 SET NAMES utf8mb4;
@@ -98,6 +98,7 @@ CREATE TABLE `tb_detection`  (
   `director` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NULL DEFAULT NULL COMMENT '负责人',
   `img` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NULL DEFAULT NULL COMMENT '合格证图片',
   `is_valid` tinyint NULL DEFAULT NULL COMMENT '检查结果 0不合格  1合格',
+  `count_of_detection` int NULL DEFAULT NULL COMMENT '检测数量',
   `create_time` datetime NULL DEFAULT NULL COMMENT '检查时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
@@ -105,41 +106,41 @@ CREATE TABLE `tb_detection`  (
 -- ----------------------------
 -- Records of tb_detection
 -- ----------------------------
-INSERT INTO `tb_detection` VALUES (1, 1, '牛肉干', 'kfZ1jaDoHI', 'X0E675OtXS', 'e0194xRTf0', 1, '2003-08-30 23:04:44');
-INSERT INTO `tb_detection` VALUES (2, 2, '苹果牛奶', 'EH2x0sJ84L', 'z2sTQmRz0x', 'v5cUJabPB6', 1, '2014-03-03 18:06:16');
-INSERT INTO `tb_detection` VALUES (3, 3, '原阳大米', '8jSLI6qJF9', 's1jmJJC6Fo', 'lh9ks2lBHk', 0, '2020-07-01 17:23:37');
-INSERT INTO `tb_detection` VALUES (4, 4, '老陈醋', 'qcPbHvZyKA', 'ELuec2fXOi', 'XpI3ZmFUzs', 0, '2017-09-15 09:01:04');
-INSERT INTO `tb_detection` VALUES (5, 5, '莱阳梨', 'bbNImLofkX', 'cV9xRX0uTt', 'o6gchcDxRA', 0, '2015-05-15 23:20:40');
-INSERT INTO `tb_detection` VALUES (6, 6, '猕猴桃', 'NVwULzkWSp', 'g2vVdovg8i', 'bc5Rd1parm', 0, '2004-12-30 03:40:11');
-INSERT INTO `tb_detection` VALUES (7, 7, '西兰花', 'qQiBNPumun', 'yMlQubqJvA', '7DLGr66RZd', 1, '2011-03-07 18:13:48');
-INSERT INTO `tb_detection` VALUES (8, 8, '青蟹', 'MMhTK6LCQ1', 'KEHmnsuJjQ', 'GxMgh275lU', 1, '2015-01-12 16:22:30');
-INSERT INTO `tb_detection` VALUES (9, 9, '龙井', 'XhZT2mENlN', 'jRCdbVfdJq', 'lS09qFrVOq', 1, '2006-12-01 20:33:15');
-INSERT INTO `tb_detection` VALUES (10, 10, '毛尖', 'RtyfSNN3vo', '0zUwg5AFxJ', 'ggJO9ozNM1', 1, '2022-01-07 04:40:50');
-INSERT INTO `tb_detection` VALUES (11, 11, '毛峰', '1XwfsnfdLN', 'n8pdjxgBvP', 'v3MiHrZoP7', 1, '2022-01-01 15:33:28');
-INSERT INTO `tb_detection` VALUES (12, 12, '猴魁', 'zZrRjhfDAs', 'w4Q65eWp8J', 'j90YbFRo9A', 1, '2013-11-19 18:41:19');
-INSERT INTO `tb_detection` VALUES (13, 13, '瓜片', 'XQcYVl2Dkn', '0luLJ9j1Gf', '4x5FxDlyyx', 1, '2006-03-17 14:48:57');
-INSERT INTO `tb_detection` VALUES (14, 14, '祁门红茶', 'MoQd7NOpa4', 'AfWC28ynH2', 'pa4SaGKJGf', 1, '2012-08-25 20:17:35');
-INSERT INTO `tb_detection` VALUES (15, 15, '明光绿豆', 'cNvQZUUSC2', 'K7T9mCyKjI', 'QTux2wtUpc', 1, '2012-07-07 22:24:24');
-INSERT INTO `tb_detection` VALUES (16, 16, '夹沟香稻', 'LOuZ6RYiEj', 'vNkjg7HgXh', 'KaoGvrtP3x', 1, '2005-10-06 06:01:41');
-INSERT INTO `tb_detection` VALUES (17, 17, '嶅莱山牌苹果', 'm4ipzMwBfh', 'szHwrjaY5l', 'B6OfWJVJhP', 1, '2008-07-17 19:31:18');
-INSERT INTO `tb_detection` VALUES (18, 18, '蔬菜', 'TnPYeuMvmR', 'fePxDp4mrh', 'LY8tqWCZZQ', 1, '2007-01-07 23:37:02');
-INSERT INTO `tb_detection` VALUES (19, 19, '鸡蛋', 'mY7RDeLXaV', 'Xcg1fobeuE', '98Fh9fu8oB', 1, '2001-06-26 12:58:37');
-INSERT INTO `tb_detection` VALUES (20, 20, '芹菜', 'bbzeLZSDFS', '7ylL7sczDi', 'RR3U6cmDft', 1, '2006-11-24 19:48:09');
-INSERT INTO `tb_detection` VALUES (21, 21, '西瓜', 'wm2U86iXWP', 'Fw5y3QKMnm', 'sdVGMCZpyD', 0, '2000-11-09 10:22:12');
-INSERT INTO `tb_detection` VALUES (22, 22, '仙梅杨梅', 'Vpwbjqpl2k', 'cfWloan9Nf', 'uh5hq5qHD9', 1, '2021-06-07 00:59:18');
-INSERT INTO `tb_detection` VALUES (23, 23, '千叶春大米', 'dlFsAtlM9R', 'uhvBjK94Vu', 'ohLQ2tz7sk', 1, '2001-08-25 22:02:51');
-INSERT INTO `tb_detection` VALUES (24, 24, '铁棍山药', 'qHtc2jFVk5', 'pgFV0WtqaF', 'znN9jTZpzs', 0, '2001-10-18 15:42:19');
-INSERT INTO `tb_detection` VALUES (25, 25, '长园野生茶油', 'CD4IkfNMCX', 'KeFY1u5nLz', 'wvfTLfG1ux', 1, '2004-06-18 14:44:47');
-INSERT INTO `tb_detection` VALUES (26, 26, '其鹏有机茶', 'ud2rCc6ftP', 's9cHTo2DPn', 'GYmphzuKrz', 0, '2001-01-18 09:35:45');
-INSERT INTO `tb_detection` VALUES (27, 27, '玉麟西瓜', 'yl47ZWJfMs', 'KOMVjXegxU', 'gkj2ezwqGv', 1, '2005-01-30 15:53:49');
-INSERT INTO `tb_detection` VALUES (28, 28, '仙梅杨梅', 'rK1aguGp8a', 'F15r4D8lUT', 'WZWbqATisl', 1, '2015-05-18 11:53:41');
-INSERT INTO `tb_detection` VALUES (29, 29, '千叶春大米', 'rPqB7w2BZv', 'QW0EbvxlZ4', 'PFhb9m0OSg', 0, '2006-10-11 13:41:38');
-INSERT INTO `tb_detection` VALUES (30, 30, '铁棍山药', '61563yp4ob', 'VpIn96Q9fp', 'GU7VOdGwol', 0, '2015-06-01 01:49:02');
-INSERT INTO `tb_detection` VALUES (31, 31, '长园野生茶油', 'HPXkGFR1pZ', 'zkKbc9AjHz', 'zK6yEn5sDf', 1, '2006-06-21 14:18:01');
-INSERT INTO `tb_detection` VALUES (32, 32, '其鹏有机茶', 'COcGg8wVIv', 'skWP67UNL0', 'ei7U8lgV0r', 1, '2000-05-17 06:48:05');
-INSERT INTO `tb_detection` VALUES (33, 116, 'Diana Howard', 'FeDuw87sZm', 'Ix4lTuNPHB', 'ByjxgS5boE', 1, '2009-09-12 04:58:45');
-INSERT INTO `tb_detection` VALUES (34, 856, 'Han Jialun', 'TAz4oKnTpO', 'gcvyyTeUP4', 'PrMnf76n3M', 0, '2022-05-26 07:27:22');
-INSERT INTO `tb_detection` VALUES (35, 639, 'Ray Gibson', 'WACo63UZ9A', 'fNNukGmKb6', 'pY1ua1g21h', 0, '2018-02-02 05:29:54');
+INSERT INTO `tb_detection` VALUES (1, 1, '牛肉干', 'kfZ1jaDoHI', 'X0E675OtXS', 'e0194xRTf0', 1, 666, '2003-08-30 23:04:44');
+INSERT INTO `tb_detection` VALUES (2, 2, '苹果牛奶', 'EH2x0sJ84L', 'z2sTQmRz0x', 'v5cUJabPB6', 1, 666, '2014-03-03 18:06:16');
+INSERT INTO `tb_detection` VALUES (3, 3, '原阳大米', '8jSLI6qJF9', 's1jmJJC6Fo', 'lh9ks2lBHk', 0, 666, '2020-07-01 17:23:37');
+INSERT INTO `tb_detection` VALUES (4, 4, '老陈醋', 'qcPbHvZyKA', 'ELuec2fXOi', 'XpI3ZmFUzs', 0, 666, '2017-09-15 09:01:04');
+INSERT INTO `tb_detection` VALUES (5, 5, '莱阳梨', 'bbNImLofkX', 'cV9xRX0uTt', 'o6gchcDxRA', 0, 666, '2015-05-15 23:20:40');
+INSERT INTO `tb_detection` VALUES (6, 6, '猕猴桃', 'NVwULzkWSp', 'g2vVdovg8i', 'bc5Rd1parm', 0, 666, '2004-12-30 03:40:11');
+INSERT INTO `tb_detection` VALUES (7, 7, '西兰花', 'qQiBNPumun', 'yMlQubqJvA', '7DLGr66RZd', 1, 666, '2011-03-07 18:13:48');
+INSERT INTO `tb_detection` VALUES (8, 8, '青蟹', 'MMhTK6LCQ1', 'KEHmnsuJjQ', 'GxMgh275lU', 1, 666, '2015-01-12 16:22:30');
+INSERT INTO `tb_detection` VALUES (9, 9, '龙井', 'XhZT2mENlN', 'jRCdbVfdJq', 'lS09qFrVOq', 1, 666, '2006-12-01 20:33:15');
+INSERT INTO `tb_detection` VALUES (10, 10, '毛尖', 'RtyfSNN3vo', '0zUwg5AFxJ', 'ggJO9ozNM1', 1, 666, '2022-01-07 04:40:50');
+INSERT INTO `tb_detection` VALUES (11, 11, '毛峰', '1XwfsnfdLN', 'n8pdjxgBvP', 'v3MiHrZoP7', 1, 666, '2022-01-01 15:33:28');
+INSERT INTO `tb_detection` VALUES (12, 12, '猴魁', 'zZrRjhfDAs', 'w4Q65eWp8J', 'j90YbFRo9A', 1, 666, '2013-11-19 18:41:19');
+INSERT INTO `tb_detection` VALUES (13, 13, '瓜片', 'XQcYVl2Dkn', '0luLJ9j1Gf', '4x5FxDlyyx', 1, 666, '2006-03-17 14:48:57');
+INSERT INTO `tb_detection` VALUES (14, 14, '祁门红茶', 'MoQd7NOpa4', 'AfWC28ynH2', 'pa4SaGKJGf', 1, 666, '2012-08-25 20:17:35');
+INSERT INTO `tb_detection` VALUES (15, 15, '明光绿豆', 'cNvQZUUSC2', 'K7T9mCyKjI', 'QTux2wtUpc', 1, 666, '2012-07-07 22:24:24');
+INSERT INTO `tb_detection` VALUES (16, 16, '夹沟香稻', 'LOuZ6RYiEj', 'vNkjg7HgXh', 'KaoGvrtP3x', 1, 666, '2005-10-06 06:01:41');
+INSERT INTO `tb_detection` VALUES (17, 17, '嶅莱山牌苹果', 'm4ipzMwBfh', 'szHwrjaY5l', 'B6OfWJVJhP', 1, 666, '2008-07-17 19:31:18');
+INSERT INTO `tb_detection` VALUES (18, 18, '蔬菜', 'TnPYeuMvmR', 'fePxDp4mrh', 'LY8tqWCZZQ', 1, 666, '2007-01-07 23:37:02');
+INSERT INTO `tb_detection` VALUES (19, 19, '鸡蛋', 'mY7RDeLXaV', 'Xcg1fobeuE', '98Fh9fu8oB', 1, 666, '2001-06-26 12:58:37');
+INSERT INTO `tb_detection` VALUES (20, 20, '芹菜', 'bbzeLZSDFS', '7ylL7sczDi', 'RR3U6cmDft', 1, 666, '2006-11-24 19:48:09');
+INSERT INTO `tb_detection` VALUES (21, 21, '西瓜', 'wm2U86iXWP', 'Fw5y3QKMnm', 'sdVGMCZpyD', 0, 666, '2000-11-09 10:22:12');
+INSERT INTO `tb_detection` VALUES (22, 22, '仙梅杨梅', 'Vpwbjqpl2k', 'cfWloan9Nf', 'uh5hq5qHD9', 1, 666, '2021-06-07 00:59:18');
+INSERT INTO `tb_detection` VALUES (23, 23, '千叶春大米', 'dlFsAtlM9R', 'uhvBjK94Vu', 'ohLQ2tz7sk', 1, 666, '2001-08-25 22:02:51');
+INSERT INTO `tb_detection` VALUES (24, 24, '铁棍山药', 'qHtc2jFVk5', 'pgFV0WtqaF', 'znN9jTZpzs', 0, 666, '2001-10-18 15:42:19');
+INSERT INTO `tb_detection` VALUES (25, 25, '长园野生茶油', 'CD4IkfNMCX', 'KeFY1u5nLz', 'wvfTLfG1ux', 1, 666, '2004-06-18 14:44:47');
+INSERT INTO `tb_detection` VALUES (26, 26, '其鹏有机茶', 'ud2rCc6ftP', 's9cHTo2DPn', 'GYmphzuKrz', 0, 666, '2001-01-18 09:35:45');
+INSERT INTO `tb_detection` VALUES (27, 27, '玉麟西瓜', 'yl47ZWJfMs', 'KOMVjXegxU', 'gkj2ezwqGv', 1, 666, '2005-01-30 15:53:49');
+INSERT INTO `tb_detection` VALUES (28, 28, '仙梅杨梅', 'rK1aguGp8a', 'F15r4D8lUT', 'WZWbqATisl', 1, 666, '2015-05-18 11:53:41');
+INSERT INTO `tb_detection` VALUES (29, 29, '千叶春大米', 'rPqB7w2BZv', 'QW0EbvxlZ4', 'PFhb9m0OSg', 0, 666, '2006-10-11 13:41:38');
+INSERT INTO `tb_detection` VALUES (30, 30, '铁棍山药', '61563yp4ob', 'VpIn96Q9fp', 'GU7VOdGwol', 0, 666, '2015-06-01 01:49:02');
+INSERT INTO `tb_detection` VALUES (31, 31, '长园野生茶油', 'HPXkGFR1pZ', 'zkKbc9AjHz', 'zK6yEn5sDf', 1, 666, '2006-06-21 14:18:01');
+INSERT INTO `tb_detection` VALUES (32, 32, '其鹏有机茶', 'COcGg8wVIv', 'skWP67UNL0', 'ei7U8lgV0r', 1, 666, '2000-05-17 06:48:05');
+INSERT INTO `tb_detection` VALUES (33, 116, 'Diana Howard', 'FeDuw87sZm', 'Ix4lTuNPHB', 'ByjxgS5boE', 1, 666, '2009-09-12 04:58:45');
+INSERT INTO `tb_detection` VALUES (34, 856, 'Han Jialun', 'TAz4oKnTpO', 'gcvyyTeUP4', 'PrMnf76n3M', 0, 666, '2022-05-26 07:27:22');
+INSERT INTO `tb_detection` VALUES (35, 639, 'Ray Gibson', 'WACo63UZ9A', 'fNNukGmKb6', 'pY1ua1g21h', 0, 666, '2018-02-02 05:29:54');
 
 -- ----------------------------
 -- Table structure for tb_logistics
