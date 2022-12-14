@@ -48,7 +48,7 @@ public class UserApplicationServiceImpl extends ServiceImpl<UserApplicatonMapper
         List<UserApplication> records = pageInfo.getRecords();
         List<UserApplicationDto> res = new ArrayList<>();
         for (UserApplication record : records) {
-            Long userId = record.getId();
+            Long userId = record.getUserId();
             User user = userService.getById(userId);
 
             UserApplicationDto dto = Convert.convert(UserApplicationDto.class, record);
