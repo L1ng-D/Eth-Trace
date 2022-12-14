@@ -35,7 +35,8 @@ public class LoginCheckFilter implements Filter {
                 "/doc.html/**",
                 "/swagger-resources/**",
                 "/v2/**",
-                "/webjars/**"
+                "/webjars/**",
+                "/common/**"
         };
 
         log.info("拦截到请求:{}",requestURI);
