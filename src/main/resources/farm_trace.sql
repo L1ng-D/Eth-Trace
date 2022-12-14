@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 14/12/2022 13:12:23
+ Date: 14/12/2022 16:54:33
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `tb_crop`  (
   `create_time` datetime NULL DEFAULT NULL,
   `update_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf16 COLLATE = utf16_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_crop
@@ -71,7 +71,7 @@ CREATE TABLE `tb_crop_growth`  (
   `info` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NULL DEFAULT NULL,
   `update_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf16 COLLATE = utf16_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_crop_growth
@@ -101,7 +101,7 @@ CREATE TABLE `tb_detection`  (
   `count_of_detection` int NULL DEFAULT NULL COMMENT '检测数量',
   `create_time` datetime NULL DEFAULT NULL COMMENT '检查时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf16 COLLATE = utf16_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_detection
@@ -156,7 +156,7 @@ CREATE TABLE `tb_logistics`  (
   `create_time` datetime NULL DEFAULT NULL,
   `update_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf16 COLLATE = utf16_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_logistics
@@ -205,7 +205,7 @@ CREATE TABLE `tb_product`  (
   `create_time` datetime NULL DEFAULT NULL COMMENT '上传时间',
   `update_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf16 COLLATE = utf16_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_product
@@ -255,7 +255,7 @@ CREATE TABLE `tb_product_crop`  (
   `create_time` datetime NULL DEFAULT NULL,
   `update_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = sjis COLLATE = sjis_japanese_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf16 COLLATE = utf16_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_product_crop
@@ -281,7 +281,7 @@ CREATE TABLE `tb_user`  (
   `create_time` datetime NULL DEFAULT NULL,
   `update_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf16 COLLATE = utf16_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_user
@@ -300,23 +300,26 @@ INSERT INTO `tb_user` VALUES (12, '农场', 'akt3tmubfecxmushc0ct@333e869794f758
 INSERT INTO `tb_user` VALUES (13, 'lingd', '4za7fez3jf8x6tib8b29@8ab2ff6e62237f82b4276c24b400d0a2', 0, 1, '2022-10-26 15:35:15', NULL);
 INSERT INTO `tb_user` VALUES (14, 'lixuyang', '123456', 2, 0, '2022-11-23 18:55:04', '2022-11-23 18:55:06');
 INSERT INTO `tb_user` VALUES (15, '万丽', '15acf7o05ma1f1bmjc8z@6e1a6fa41d0d331fc89294eb368f7ea0', 0, NULL, '2022-12-11 14:18:44', NULL);
+INSERT INTO `tb_user` VALUES (16, 'test', 'ai62d3ncnw968burpvg2@49c9b1afdff3a2f6f7e7ceca0880ba54', 0, NULL, '2022-12-14 14:37:54', NULL);
 
 -- ----------------------------
 -- Table structure for tb_user_application
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_user_application`;
 CREATE TABLE `tb_user_application`  (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `user_id` bigint NULL DEFAULT NULL,
-  `file` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NULL DEFAULT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `user_id` bigint NULL DEFAULT NULL COMMENT '用户id',
+  `file` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NULL DEFAULT NULL COMMENT '文件名',
   `status` int NULL DEFAULT NULL COMMENT '0待审批  1：通过  2：驳回',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf16 COLLATE = utf16_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_user_application
 -- ----------------------------
 INSERT INTO `tb_user_application` VALUES (1, 1, 'xxx.word', 0);
 INSERT INTO `tb_user_application` VALUES (2, 2, 'xx.pdf', 0);
+INSERT INTO `tb_user_application` VALUES (3, 16, '11.txt', 0);
+INSERT INTO `tb_user_application` VALUES (4, 7, '123456', 0);
 
 SET FOREIGN_KEY_CHECKS = 1;

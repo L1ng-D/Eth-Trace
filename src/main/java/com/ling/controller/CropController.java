@@ -2,6 +2,8 @@ package com.ling.controller;
 
 import com.ling.common.Result;
 import com.ling.entity.Crop;
+import com.ling.entity.CropGrowth;
+import com.ling.service.CropGrowthService;
 import com.ling.service.CropService;
 import com.ling.util.UserHolder;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +19,9 @@ public class CropController {
 
     @Resource
     private CropService cropService;
+
+    @Resource
+    private CropGrowthService cropGrowthService;
 
     @GetMapping("/page")
     public Result page(int page, int pageSize, String name, String place){
@@ -35,6 +40,15 @@ public class CropController {
         crop.setUserId(UserHolder.getUser().getId());
         cropService.save(crop);
         return Result.ok(crop);
+    }
+
+    @PostMapping("/add/growth")
+    public Result addGrowth(@RequestBody CropGrowth growth){
+        Long userId = UserHolder.getUser().getId();
+        growth.setUpdateUserId(userId);
+        boolean isSuccess = cropGrowthService.save(growth);
+
+        return Result.ok(isSuccess);
     }
 
     @GetMapping("/all")

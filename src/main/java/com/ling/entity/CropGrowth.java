@@ -22,6 +22,8 @@ public class CropGrowth {
 
     private String info;
 
+    private Long updateUserId;
+
     private LocalDateTime updateTime;
 
 }
